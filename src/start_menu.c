@@ -47,6 +47,9 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "script.h"
+
+extern u8 DebugMenuScript[];
 
 // Menu actions
 enum
@@ -627,6 +630,14 @@ static bool8 HandleStartMenuInput(void)
         }
 
         return FALSE;
+    }
+
+    if (JOY_NEW(SELECT_BUTTON))
+    {
+        HideStartMenu();
+        ScriptContext_Enable();
+        ScriptContext_SetupScript(DebugMenuScript);
+        return TRUE;
     }
 
     if (JOY_NEW(START_BUTTON | B_BUTTON))
