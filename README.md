@@ -2,7 +2,11 @@
 
 ## Description of features:
 To use this like a printf command, you only have to use an extern declare for DebugPrint.
-You supply it an array of characters (string) to print. You can load things into the StringVar buffers if you like, but this is intended to be used on the fly. Open 'src/start_menu.c L#658 / L#609' to see how to use it.
+You supply it an array of characters (string) to print, a number of arguments equal to the number of variables you want read out (can be zero if you just want to print text), and then every variable you want printed. 
+You can load things into the StringVar buffers if you like, but this is intended to be used on the fly.
+**DebugPrint((const u8[]) _("String to print"), NUM_VARS_TO_PRINT, var1, var2, var3) etc...**  
+
+Open 'src/start_menu.c L#658 / L#609' to see an example of how to use it. You can see it ingame after compiling by opening then closing your start menu. It prints play time hours and minutes using DebugPrint when you close the start menu.
 
 This branch eliminates much of the need for external debugging (using printf) such as mGBA printf, or similar. If you need multiline and logging, then you will want to use one of those solutions.
 

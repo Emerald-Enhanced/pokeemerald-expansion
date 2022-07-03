@@ -67,6 +67,9 @@
 #include "palette.h"
 #include "battle_util.h"
 
+#include <stdio.h>    //both of these required for DebugPrint.
+#include <stdarg.h>
+
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
 static EWRAM_DATA u32 sBikeCyclingTimer = 0;
@@ -4138,7 +4141,7 @@ u8 Script_TryGainNewFanFromCounter(void)
 void CodeDebugPrintTask(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    if (tDebugFrames < 60) //set the number of frames you want the print to stay onscreen here.
+    if (tDebugFrames < 60) //60 here is the number of frames to show the printed text. Game runs at 60fps, so this is one second.
     {
         tDebugFrames++;
     }
@@ -4149,16 +4152,33 @@ void CodeDebugPrintTask(u8 taskId)
         DestroyTask(taskId);
     }
 }
-
-void DebugPrint(const u8 *buffer)
+const u8 gText_Comma[] = _(",");
+extern const u8 gText_Space[];
+void DebugPrint(const u8 *buffer, int count, ...)
 {
+    va_list args;
     unsigned taskId;
     unsigned tDebuggingWindow;
     struct WindowTemplate template;
+    u32 i;
 
     StringCopy(gStringVar3, buffer);
-    StringExpandPlaceholders(gStringVar4, gStringVar3); //This will expand things such as {PLAYER} or {COLOR}. 
-                                                        // If you don't need this functionality, remove this line and set the below references of gStringVar4 to gStringvar3.
+    StringExpandPlaceholders(gStringVar4, gStringVar3);//If you don't need to expand thigns like {PLAYER} or {COLOR}, then you can remove this and the next line, and just copy gStringVar3 to gStringVar4.
+    StringAppend(gStringVar4, gText_Space);
+    va_start(args, count);
+    for (i = 0; i < count; i++) //this loop adds each supplied variable to the end of the printed string.
+    {
+        ConvertIntToDecimalStringN(gStringVar3, va_arg(args, u32), STR_CONV_MODE_LEFT_ALIGN, 4); //the 4 here is number of digits. Given the limited horizontal space on the GBA, you may need to adjust as necessary for your printing needs.
+        StringAppend(gStringVar4, gStringVar3);
+        if (i != (count - 1))
+        {
+            StringAppend(gStringVar4, gText_Comma);
+            StringAppend(gStringVar4, gText_Space);
+        }
+    }
+    va_end(args);
+
+
     SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
     tDebuggingWindow = AddWindow(&template);
     FillWindowPixelBuffer(tDebuggingWindow, 0);
