@@ -4131,3 +4131,40 @@ u8 Script_TryGainNewFanFromCounter(void)
 {
     return TryGainNewFanFromCounter(gSpecialVar_0x8004);
 }
+
+#define tDebugFrames data[0]
+#define tDBWindowData data[1]
+
+void CodeDebugPrintTask(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    if (tDebugFrames < 60) //set the number of frames you want the print to stay onscreen here.
+    {
+        tDebugFrames++;
+    }
+    else
+    {
+        ClearStdWindowAndFrameToTransparent(tDBWindowData, TRUE);
+        RemoveWindow(tDBWindowData);
+        DestroyTask(taskId);
+    }
+}
+
+void DebugPrint(const u8 *buffer)
+{
+    unsigned taskId;
+    unsigned tDebuggingWindow;
+    struct WindowTemplate template;
+
+    StringCopy(gStringVar3, buffer);
+    StringExpandPlaceholders(gStringVar4, gStringVar3); //This will expand things such as {PLAYER} or {COLOR}. 
+                                                        // If you don't need this functionality, remove this line and set the below references of gStringVar4 to gStringvar3.
+    SetWindowTemplateFields(&template, 0, 1, 1, 20, 2, 15, 100);
+    tDebuggingWindow = AddWindow(&template);
+    FillWindowPixelBuffer(tDebuggingWindow, 0);
+    PutWindowTilemap(tDebuggingWindow);
+    CopyWindowToVram(tDebuggingWindow, 1);
+    AddTextPrinterParameterized(tDebuggingWindow, 1, gStringVar4, 0, 0, 0, NULL);
+    taskId = CreateTask(CodeDebugPrintTask, 0xFF);
+    gTasks[taskId].tDBWindowData = tDebuggingWindow;
+}

@@ -1,6 +1,17 @@
-# pokeemerald Expansion
+## This is a feature branch for pokeemerald that adds a form of in-game printing for debugging purposes.
 
-## What is the pokeemerald Expansion?
+## Description of features:
+To use this like a printf command, you only have to use an extern declare for DebugPrint.
+You supply it an array of characters (string) to print. You can load things into the StringVar buffers if you like, but this is intended to be used on the fly. Open 'src/start_menu.c L#658 / L#609' to see how to use it.
+
+This branch eliminates much of the need for external debugging (using printf) such as mGBA printf, or similar. If you need multiline and logging, then you will want to use one of those solutions.
+
+This can be fairly easily adapted to be usable in scripts just by supplying a script string as the 'buffer'.
+
+Code for DebugPrint is in 'src/field_specials.c'
+# ORIGINAL README.MD BELOW
+
+# What is the pokeemerald Expansion?
 
 The Pokeemerald Expansion is a collection of feature branches that can be integrated into existing [pokeemerald](https://github.com/pret/pokeemerald) projects.
 
