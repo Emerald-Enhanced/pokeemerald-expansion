@@ -10,7 +10,7 @@ This feature branch contains a dynamic npc system. These dynamic NPC's are store
 
 ### IMPORTANT INFORMATION
 Merge Difficulty: Intermediate (7/10)
- You may have to free up space for this feature branch in your save block
+ You may have to free up space for this feature branch in your save block.
  This may interfere with follower systems that use localid's 0xF0 thru 0xF3.
 
 #### Usage Difficulty: Intermediate (5/10)
