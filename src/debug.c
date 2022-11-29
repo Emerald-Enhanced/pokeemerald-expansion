@@ -962,8 +962,8 @@ static void DebugAction_Util_Warp_Warp(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar2, MAP_GROUPS_COUNT-1, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringExpandPlaceholders(gStringVar1, sDebugText_Util_WarpToMap_SelMax);
     StringCopy(gStringVar3, gText_DigitIndicator[0]);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectMapGroup);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectMapGroup);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Util_Warp_SelectMapGroup;
     gTasks[taskId].data[2] = windowId;
@@ -1005,8 +1005,8 @@ static void DebugAction_Util_Warp_SelectMapGroup(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar2, MAP_GROUPS_COUNT - 1, STR_CONV_MODE_LEADING_ZEROS, 2);
         StringExpandPlaceholders(gStringVar1, sDebugText_Util_WarpToMap_SelMax);
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectMapGroup);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectMapGroup);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1020,8 +1020,8 @@ static void DebugAction_Util_Warp_SelectMapGroup(u8 taskId)
         StringExpandPlaceholders(gStringVar1, sDebugText_Util_WarpToMap_SelMax);
         GetMapName(gStringVar2, Overworld_GetMapHeaderByGroupAndId(gTasks[taskId].data[5], gTasks[taskId].data[3])->regionMapSectionId, 0);
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectMap);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectMap);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Util_Warp_SelectMap;
     }
@@ -1066,8 +1066,8 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
         StringExpandPlaceholders(gStringVar1, sDebugText_Util_WarpToMap_SelMax);
         GetMapName(gStringVar2, Overworld_GetMapHeaderByGroupAndId(gTasks[taskId].data[5], gTasks[taskId].data[3])->regionMapSectionId, 0);
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectMap);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectMap);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1078,8 +1078,8 @@ static void DebugAction_Util_Warp_SelectMap(u8 taskId)
 
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectWarp);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectWarp);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
         gTasks[taskId].func = DebugAction_Util_Warp_SelectWarp;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -1108,8 +1108,8 @@ static void DebugAction_Util_Warp_SelectWarp(u8 taskId)
 
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_WarpToMap_SelectWarp);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_WarpToMap_SelectWarp);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1166,7 +1166,7 @@ static void DebugAction_Util_CheckSaveBlock(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar1, sizeof(struct SaveBlock1), STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, sizeof(struct SaveBlock2), STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar3, sizeof(struct PokemonStorage), STR_CONV_MODE_LEFT_ALIGN, 6);
-    StringExpandPlaceholders(gStringVar4, sDebugText_SaveBlockSize);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_SaveBlockSize);
 
     Debug_DestroyMenu_Full(taskId);
     LockPlayerFieldControls();
@@ -1212,8 +1212,8 @@ static void DebugAction_Util_Weather(u8 taskId)
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringCopyPadded(gStringVar1, sWeatherNames[0], CHAR_SPACE, 30);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Util_Weather_ID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_Weather_ID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Util_Weather_SelectId;
     gTasks[taskId].data[2] = windowId;
@@ -1257,8 +1257,8 @@ static void DebugAction_Util_Weather_SelectId(u8 taskId)
         else
             StringCopyPadded(gStringVar1, sText_WeatherNotDefined, CHAR_SPACE, 30); 
 
-        StringExpandPlaceholders(gStringVar4, sDebugText_Util_Weather_ID);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Util_Weather_ID);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1392,8 +1392,8 @@ static void DebugAction_Flags_Flags(u8 taskId)
     else
         StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
     StringCopy(gStringVar3, gText_DigitIndicator[0]);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Flags_Flag);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Flags_Flag);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Flags_FlagsSelect;
     gTasks[taskId].data[2] = windowId;
@@ -1456,8 +1456,8 @@ static void DebugAction_Flags_FlagsSelect(u8 taskId)
         else
             StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
         StringCopy(gStringVar3, gText_DigitIndicator[gTasks[taskId].data[4]]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Flags_Flag);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Flags_Flag);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 }
 
@@ -1648,8 +1648,8 @@ static void DebugAction_Vars_Vars(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
     StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Vars_Variable);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Vars_Variable);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Vars_Select;
     gTasks[taskId].data[2] = windowId;
@@ -1700,8 +1700,8 @@ static void DebugAction_Vars_Select(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
 
         //Combine str's to full window string
-        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_Variable);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Vars_Variable);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -1720,8 +1720,8 @@ static void DebugAction_Vars_Select(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[5], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
-        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_VariableValueSet);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Vars_VariableValueSet);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].data[6] = gTasks[taskId].data[5]; //New value selector
         gTasks[taskId].func = DebugAction_Vars_SetValue;
@@ -1792,8 +1792,8 @@ static void DebugAction_Vars_SetValue(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[6], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_VARIABLES);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]); //Current digit
-        StringExpandPlaceholders(gStringVar4, sDebugText_Vars_VariableValueSet);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Vars_VariableValueSet);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 }
 
@@ -1820,8 +1820,8 @@ static void DebugAction_Give_Item(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
     CopyItemName(1, gStringVar1);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, sDebugText_ItemID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_ItemID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Give_Item_SelectId;
     gTasks[taskId].data[2] = windowId;
@@ -1865,8 +1865,8 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
         CopyItemName(gTasks[taskId].data[3], gStringVar1);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, sDebugText_ItemID);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_ItemID);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         FreeSpriteTilesByTag(ITEM_TAG);                         //Destroy item icon
         FreeSpritePaletteByTag(ITEM_TAG);                       //Destroy item icon
@@ -1887,8 +1887,8 @@ static void DebugAction_Give_Item_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEM_QUANTITY);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_ItemQuantity);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_ItemQuantity);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Item_SelectQuantity;
     }
@@ -1935,8 +1935,8 @@ static void DebugAction_Give_Item_SelectQuantity(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEM_QUANTITY);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_ItemQuantity);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_ItemQuantity);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2015,8 +2015,8 @@ static void DebugAction_Give_PokemonSimple(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 3);
     StringCopy(gStringVar1, gSpeciesNames[1]);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     //Set task data
     gTasks[taskId].func = DebugAction_Give_Pokemon_SelectId;
@@ -2053,8 +2053,8 @@ static void DebugAction_Give_PokemonComplex(u8 taskId)
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, 4);
     StringCopy(gStringVar1, gSpeciesNames[1]);
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-    StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     gTasks[taskId].func = DebugAction_Give_Pokemon_SelectId;
     gTasks[taskId].data[2] = windowId;
@@ -2101,8 +2101,8 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         StringCopy(gStringVar1, gSpeciesNames[gTasks[taskId].data[3]]); //CopyItemName(gTasks[taskId].data[3], gStringVar1);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 4);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonID);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         FreeAndDestroyMonIconSprite(&gSprites[gTasks[taskId].data[6]]);
         FreeMonIconPalettes(); //Free space for new pallete
@@ -2120,8 +2120,8 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonLevel);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonLevel);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectLevel;
     }
@@ -2166,8 +2166,8 @@ static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonLevel);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonLevel);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2190,8 +2190,8 @@ static void DebugAction_Give_Pokemon_SelectLevel(u8 taskId)
             ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 0);
             StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
             StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonShiny);
-            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonShiny);
+            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectShiny;
         }
@@ -2231,8 +2231,8 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
             StringCopyPadded(gStringVar2, sDebugText_Flags_FlagUnset, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 0);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonShiny);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonShiny);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2245,8 +2245,8 @@ static void DebugAction_Give_Pokemon_SelectShiny(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gNatureNamePointers[0]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonNature);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonNature);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectNature;
     }
@@ -2280,8 +2280,8 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gNatureNamePointers[gTasks[taskId].data[3]]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonNature);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonNature);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2296,8 +2296,8 @@ static void DebugAction_Give_Pokemon_SelectNature(u8 taskId)
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         abilityId = GetAbilityBySpecies(sDebugMonData->mon_speciesId, 0);
         StringCopy(gStringVar1, gAbilityNames[abilityId]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonAbility);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonAbility);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectAbility;
     }
@@ -2340,8 +2340,8 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
         StringCopy(gStringVar1, gAbilityNames[abilityId]);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonAbility);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonAbility);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2353,8 +2353,8 @@ static void DebugAction_Give_Pokemon_SelectAbility(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopyPadded(gStringVar3, gStringVar3, CHAR_SPACE, 15);
-        StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_0);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
         gTasks[taskId].func = DebugAction_Give_Pokemon_SelectIVs;
     }
@@ -2400,25 +2400,25 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
         switch (gTasks[taskId].data[7])
         {
         case 0:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_0);
             break;
         case 1:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_1);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_1);
             break;
         case 2:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_2);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_2);
             break;
         case 3:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_3);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_3);
             break;
         case 4:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_4);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_4);
             break;
         case 5:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_5);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_5);
             break;
         }
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     //If A or B button
@@ -2459,25 +2459,25 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             switch (gTasks[taskId].data[7])
             {
             case 0:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_0);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_0);
                 break;
             case 1:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_1);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_1);
                 break;
             case 2:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_2);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_2);
                 break;
             case 3:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_3);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_3);
                 break;
             case 4:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_4);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_4);
                 break;
             case 5:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonIV_5);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonIV_5);
                 break;
             }
-            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_SelectIVs;
         }
@@ -2491,8 +2491,8 @@ static void DebugAction_Give_Pokemon_SelectIVs(u8 taskId)
             StringCopy(gStringVar1, gMoveNames[gTasks[taskId].data[3]]);
             StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
             ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, 3);
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
-            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_0);
+            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_Move;
         }
@@ -2540,19 +2540,19 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId)
         switch (gTasks[taskId].data[7])
         {
         case 0:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_0);
             break;
         case 1:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_1);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_1);
             break;
         case 2:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_2);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_2);
             break;
         case 3:
-            StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_3);
+            StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_3);
             break;
         }
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2592,19 +2592,19 @@ static void DebugAction_Give_Pokemon_Move(u8 taskId)
             switch (gTasks[taskId].data[7])
             {
             case 0:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_0);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_0);
                 break;
             case 1:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_1);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_1);
                 break;
             case 2:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_2);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_2);
                 break;
             case 3:
-                StringExpandPlaceholders(gStringVar4, sDebugText_PokemonMove_3);
+                StringExpandPlaceholders(gSystemStringVar, sDebugText_PokemonMove_3);
                 break;
             }
-            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+            AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
 
             gTasks[taskId].func = DebugAction_Give_Pokemon_Move;
         }
@@ -2822,8 +2822,8 @@ static void DebugAction_Sound_SE(u8 taskId)
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, 1, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
     StringCopyPadded(gStringVar1, sSENames[0], CHAR_SPACE, 35);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Sound_SE_ID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Sound_SE_ID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     StopMapMusic(); //Stop map music to better hear sounds
 
@@ -2863,8 +2863,8 @@ static void DebugAction_Sound_SE_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         StringCopyPadded(gStringVar1, sSENames[gTasks[taskId].data[3]-1], CHAR_SPACE, 35);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Sound_SE_ID);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Sound_SE_ID);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
@@ -2899,8 +2899,8 @@ static void DebugAction_Sound_MUS(u8 taskId)
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, START_MUS, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
     StringCopyPadded(gStringVar1, sBGMNames[0], CHAR_SPACE, 35);
-    StringExpandPlaceholders(gStringVar4, sDebugText_Sound_MUS_ID);
-    AddTextPrinterParameterized(windowId, 1, gStringVar4, 1, 1, 0, NULL);
+    StringExpandPlaceholders(gSystemStringVar, sDebugText_Sound_MUS_ID);
+    AddTextPrinterParameterized(windowId, 1, gSystemStringVar, 1, 1, 0, NULL);
 
     StopMapMusic(); //Stop map music to better hear new music
 
@@ -2940,8 +2940,8 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].data[4]]);
         StringCopyPadded(gStringVar1, sBGMNames[gTasks[taskId].data[3]-START_MUS], CHAR_SPACE, 35);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].data[3], STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-        StringExpandPlaceholders(gStringVar4, sDebugText_Sound_MUS_ID);
-        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gStringVar4, 1, 1, 0, NULL);
+        StringExpandPlaceholders(gSystemStringVar, sDebugText_Sound_MUS_ID);
+        AddTextPrinterParameterized(gTasks[taskId].data[2], 1, gSystemStringVar, 1, 1, 0, NULL);
     }
 
     if (JOY_NEW(A_BUTTON))
