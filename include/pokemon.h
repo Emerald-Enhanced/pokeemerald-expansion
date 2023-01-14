@@ -100,6 +100,8 @@ enum {
     MON_DATA_SPEED2,
     MON_DATA_SPATK2,
     MON_DATA_SPDEF2,
+    MON_DATA_HAS_CUSTOM_NATURE,
+    MON_DATA_CUSTOM_NATURE_ID
 };
 
 struct PokemonSubstruct0
@@ -110,7 +112,9 @@ struct PokemonSubstruct0
     /*0x08*/ u8 ppBonuses;
     /*0x09*/ u8 friendship;
     /*0x0A*/ u16 pokeball:5; //31 balls
-             u16 filler:11;
+             u16 hasCustomNature:1;
+             u16 customNatureId:5;
+             u16 filler:5;
 }; /* size = 12 */
 
 struct PokemonSubstruct1

@@ -393,6 +393,8 @@ LittlerootTown_EventScript_GoSaveBirchTrigger::
 	end
 
 LittlerootTown_EventScript_TownSign::
+	setvar VAR_0x8000, NATURE_ADAMANT
+	callnative SetCustomNature
 	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
 	end
 
