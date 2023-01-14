@@ -1,3 +1,9 @@
+## Ryu's custom natures branch.
+
+### Simple way to have custom natures that's not destructive to mon data and vanilla compatible. No additional save space is required for this branch.
+
+
+
 # pokeemerald Expansion
 
 ## What is the pokeemerald Expansion?
