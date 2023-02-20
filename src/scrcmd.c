@@ -90,7 +90,7 @@ static u8 *const sScriptStringVars[] =
     gStringVar1,
     gStringVar2,
     gStringVar3,
-    gSystemStringVar,
+    gStringVar4,
     gStringVar5,
     gStringVar6,
 };
